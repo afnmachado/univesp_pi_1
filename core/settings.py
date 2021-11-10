@@ -95,13 +95,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': config('awsdatabase'),
-        'USER': config('awsuser'),
-        'PASSWORD': config('awspassword'),
-        'HOST': config('awshost'),
-        'PORT': config('awsport'),
+        'NAME': config('database'),
+        'USER': config('user'),
+        'PASSWORD': config('password'),
+        'HOST': config('host'),
+        'PORT': config('port'),
         'OPTIONS': {
-            'charset': config('awsdefault-character-set')
+            'charset': config('charset')
         }
     }
 }
