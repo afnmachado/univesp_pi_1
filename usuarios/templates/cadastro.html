@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+Vai hoje!? Cadastro
+
+{% endblock%}
+
+{% block 'body' %}
+<div class="bg-white  rounded-5 shadow-5-strong p-5">
+    {% if status == '1' %}
+  <div class="alert alert-danger" role="alert">
+      E-mail já cadastrado no sistema
+    </div>
+  {% endif %}
+
+  {% if status == '2' %}
+  <div class="alert alert-danger" role="alert">
+      Nome e Email não podem ser vazios
+    </div>
+  {% endif %}
+
+  {% if status == '3' %}
+  <div class="alert alert-danger" role="alert">
+      Senha deve conter no mínimo 8 caracteres
+    </div>
+  {% endif %}
+
+  {% if status == '4' %}
+  <div class="alert alert-danger" role="alert">
+      Erro interno do sistema
+    </div>
+  {% endif %}
+
+  {% if status == '0' %}
+  <div class="alert alert-success" role="alert">
+      Cadastro realizado com sucesso
+    </div>
+  {% endif %}
+  <h2>Cadastro</h2>
+  <hr>
+  <br>
+  <form method="POST" action="{% url 'valida_cadastro' %}">{% csrf_token %}
+    <!-- Nome input -->
+    <div class="form-outline mb-4">
+      <input type="text" id="formCadastroNome" class="form-control" name="nome"/>
+      <label class="form-label" for="formCadastroNome">Nome</label>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <input type="email" id="formCadastroEmail" class="form-control" name="email"/>
+      <label class="form-label" for="formCadastroEmail">E-mail</label>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" id="formCadastroSenha" class="form-control" name="senha"/>
+      <label class="form-label" for="formCadastroSenha">Senha</label>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+  </form>
+  <div class="col text-center">
+    <font size="-1">
+      <a href="{% url 'login' %}"><P></P>Login</a>
+    </font>
+  </div>
+</div>
+{% endblock %}

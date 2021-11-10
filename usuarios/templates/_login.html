@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+Logar
+
+{% endblock%}
+
+{% block 'body' %}
+<div  class="bg-white  rounded-5 shadow-5-strong p-5">
+    <h2>Login</h2>
+    <hr>
+    <br>
+    <form method="POST" action="#">{% csrf_token %}
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="formCadastroEmail" class="form-control" name="email"/>
+            <label class="form-label" for="formCadastroEmail">E-mail</label>
+        </div>
+        
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="formCadastroSenha" class="form-control" name="senha"/>
+            <label class="form-label" for="formCadastroSenha">Senha</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+    </form>
+</div>
+{% endblock %}
