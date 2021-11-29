@@ -20,17 +20,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
 </head>
-<body class="d-flex flex-column bg-dark" style="overflow: hidden;">
+<body class="d-flex flex-column bg-dark">
       <!--Main Navigation-->
   <header>
     <style>
       #intro {
         background-image: url("{% static 'img/2592.jpg' %}");
-        height: 93vh;
+        height: 85vh;
       }
 
       /* Height for devices larger than 576px */
-      @media (min-width: 992px) {
+      @media (min-width: 576px) {
         #intro {
           margin-top: -58.59px;
         }
@@ -42,10 +42,10 @@
     </style>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="z-index: 1000">
+    <nav class="navbar navbar-expand-lg navbar-dark d-none d-sm-block" style="z-index: 2000;">
       <div class="container-fluid">
         <!-- Navbar brand -->
-        <a class="navbar-brand nav-link" target="_self" href="{% url 'login1' %}">
+        <a class="navbar-brand nav-link" target="_self" href="{% url 'login' %}">
           <strong>Vai amanhã?</strong>
         </a>
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
@@ -55,20 +55,19 @@
         <div class="collapse navbar-collapse" id="navbarExample01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}" rel="nofollow"
-                target="_self">Home</a>
+                <a class="nav-link" href="https://www.djangoproject.com/" rel="nofollow"
+                target="_blank">Django</a>
             </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                Action
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Listar</a></li>
-                <li><a class="dropdown-item" href="{% url 'agendar' %}">Incluir</a></li>
-                <li><a class="dropdown-item" href="{% url 'excluir' %}">Excluir</a></li>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.mysql.com/" rel="nofollow"
+                target="_blank">MySQL</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://git-scm.com/" rel="nofollow"
+                  target="_blank">Git</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://aws.amazon.com/free" target="_blank">AWS</a>
           </ul>
         </div>
       </div>
@@ -76,10 +75,10 @@
     <!-- Navbar -->
     <!-- Background image -->
     <div id="intro" class="bg-image shadow-2-strong">
-        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8); overflow-x: hidden; overflow-y: visible;">
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4">
+                    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
                         {% block 'body'%}{% endblock %}
                     </div>
                 </div>
@@ -91,7 +90,7 @@
 <!--Main Navigation-->
 
 <!--Footer-->
-  <footer id="sticky-footer" class="flex-shrink-0 bg-dark text-white-50">
+  <footer id="sticky-footer" class="flex-shrink-0 bg-dark text-white-50" >
     <div class="container">
       <div class="row justify-content-center">
         <div class="col text-center p-2">

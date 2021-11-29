@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+
+Atualizar seu agendamento!
+
+{% endblock%}
+
+{% block 'body' %}
+
+<div  class="bg-white rounded-5 shadow-5-strong p-5">
+    <div class="main">
+        {{ hoje }}<br>
+        {% for data in lista_agendamento  %}
+            {% if data.data|date:"SHORT_DATE_FORMAT" == hoje %}
+                {{ data.linha }}<br/>
+                {{ data.id }}<br/>
+                {{ data.funcionario_cpf }}<br/>
+            {% endif%}
+        <hr/>
+        {% endfor %}
+    </div>
+</div>
+<div class="text-center text-white-50 fs-6">
+    <br>
+    <a href="{% url 'sair' %}" class="text-white-50">Logout</a>
+  </div>
+
+{% endblock %}

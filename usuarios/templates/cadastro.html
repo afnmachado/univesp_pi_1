@@ -1,13 +1,13 @@
 {% extends 'base.html'%}
 
 {% block 'titulo'%}
-Vai hoje!? Cadastro
+Vai hoje!? Cadastre-se
 
 {% endblock%}
 
 {% block 'body' %}
 <div class="bg-white  rounded-5 shadow-5-strong p-5">
-    {% if status == '1' %}
+  {% if status == '1' %}
   <div class="alert alert-danger" role="alert">
       E-mail já cadastrado no sistema
     </div>
@@ -36,9 +36,8 @@ Vai hoje!? Cadastro
       Cadastro realizado com sucesso
     </div>
   {% endif %}
-  <h2>Cadastro</h2>
+  <h3>Cadastre-se</h3>
   <hr>
-  <br>
   <form method="POST" action="{% url 'valida_cadastro' %}">{% csrf_token %}
     <!-- Nome input -->
     <div class="form-outline mb-4">
@@ -58,13 +57,24 @@ Vai hoje!? Cadastro
       <label class="form-label" for="formCadastroSenha">Senha</label>
     </div>
 
+    <!-- Nome input -->
+    <div class="form-outline mb-4">
+      <input type="text" id="formCadastroCPF" class="form-control" name="cpf"/>
+      <label class="form-label" for="formCadastroCPF">CPF</label>
+    </div>
+
+    <!-- Nome input 
+    <div class="form-outline mb-4">
+      <input type="text" id="formCadastroPonto" class="form-control" name="ponto"/>
+      <label class="form-label" for="formCadastroPonto">Ponto</label>
+    </div> -->
+
     <!-- Submit button -->
     <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
   </form>
-  <div class="col text-center">
-    <font size="-1">
-      <a href="{% url 'login' %}"><P></P>Login</a>
-    </font>
-  </div>
 </div>
+<div class="text-center text-white-50 fs-6">
+  <br>
+     Já tem uma conta? <a href="{% url 'login1' %}" class="link-white">Entre.</a>
+  </div>
 {% endblock %}

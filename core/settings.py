@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'usuarios',
+    'agendamentos',
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,5 @@ db_from_env = dj_database_url.config(conn_max_age=0, ssl_require=False)
 # Activate Django-Heroku.
 django_heroku.settings(locals() ,databases=False)
 DATABASES['default'].update(db_from_env)
+
+LOGIN_REDIRECT_URL = '/home'

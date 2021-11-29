@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+
+Atualizar seu agendamento!
+
+{% endblock%}
+
+{% block 'body' %}
+
+<div  class="bg-white rounded-5 shadow-5-strong p-5">
+    <div class="main">
+        <!-- Display attributes of instance -->
+        {{ data.id }}<br/>
+        {{ data.funcionario_cpf }}<br/>
+        {{ data.data }}<br/>
+        {{ data.reserva }}<br/>
+    </div>
+</div>
+{% endblock %}

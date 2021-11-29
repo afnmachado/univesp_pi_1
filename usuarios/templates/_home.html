@@ -1,0 +1,139 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+
+Vai amanhã?
+
+{% endblock%}
+
+{% block 'body' %}
+
+{% for x in dados_funcionario %}
+
+<div  class="bg-white  rounded-5 shadow-5-strong p-5">
+  {% if status == '1' %}
+  <div class="alert alert-danger" role="alert">
+      Erro!
+    </div>
+  {% endif %}
+
+  {% if status == '0' %}
+  <div class="alert alert-success" role="alert">
+      Agendamento atualizado!
+    </div>
+  {% endif %}
+  <div class="p-1">
+    <h2>
+      Oi <b>{{ x.nome }}</b>!
+    </h2>
+      Aqui estão suas reservas:
+  </div>
+  <form method="POST" action="{% url 'home' %}">{% csrf_token %}
+    {% for i in page_obj %}
+    <input type="hidden" id="form1Example0" class="form-control-plaintext invisible" name="idagendaform" value="{{ i.id }}" readonly/>
+    <!--<div class="row g-1">
+      <label class="col-sm-2" for="staticData">Dia: </label>
+      <div class="col-form-label">
+        <input type="datetime" id="form1Example2" class="form-control-plaintext" name="dataform" value="{{ i.data }}" readonly/>
+      </div>
+      {% if i.reserva %}
+      <label class="col-sm-2" for="staticReserva">Reserva: </label>
+      <div class="col-form-label">
+        <input class="form-check-input" name="reservaform" type="checkbox" value="0" id="form1Example3" checked />
+      </div>
+      {% endif %}
+      {% if not i.reserva %}
+      <label class="col-sm-2" for="staticReserva">Reserva: </label>
+      <div class="col-form-label">
+        <input class="form-check-input" name="reservaform" type="checkbox" value="1" id="form1Example3" />
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div> -->
+
+    <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in page_obj %}
+        <tr>
+          <th scope="row">{{i.data}}</th>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <hr>
+
+  <!-- <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">Reservado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in page_obj %}
+        <tr>
+          <th scope="row">{{i.data}}</th>
+          <td>{{i.reserva}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <hr> -->
+
+  <div class="pagination justify-content-center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+            <a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-angle-left"></i></a>
+        {% endif %}
+
+        {% if not page_obj.has_previous %}
+            <i class="fas fa-angle-double-left"></i>
+            <i class="fas fa-angle-left"></i>
+        {% endif %}
+        {{data.lista_agendamento}}
+        <span class="current">
+            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if not page_obj.has_next %}
+        <i class="fas fa-angle-right"></i>
+        <i class="fas fa-angle-double-right"></i>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"> <i class="fas fa-angle-right"></i></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}"> <i class="fas fa-angle-double-right"></i></a>
+        {% endif %}
+
+    </span>
+</div>
+<br>
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-end">
+    <button class="btn btn-primary" type="button">
+      Agendar
+    </button>
+      <button type="submit" class="btn btn-primary">
+        Excluir
+      </button>
+    <a href="{% url 'sair' %}" class="link-white">
+      <button class="btn btn-primary" type="button">
+        Sair
+      </button>
+    </a>
+  </div>
+  </form>
+ </div>
+
+ {% endfor %}
+ 
+{% endblock %}

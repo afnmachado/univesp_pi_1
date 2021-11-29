@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+
+Vai amanhã?
+
+{% endblock%}
+
+{% block 'body' %}
+
+{% if status == '0' %}
+  <div class="alert alert-success" role="alert">
+    Cadastro realizado com sucesso
+  </div>
+{% endif %}
+
+{% for x in dados_funcionario %}
+
+<div  class="bg-white  rounded-5 shadow-5-strong p-5">
+  <div class="p-1">
+    <h2>
+      Oi <b>{{ x.nome }}</b>!
+    </h2>
+      Faça sua reserva...
+  </div>
+  <p></p>
+  <form method="POST" action="{% url 'agendar' %}">{% csrf_token %}
+  <div class="row g-1">
+      <label class="col-sm-2" for="staticData">Dia: </label>
+      <div class="col-form-label">
+        <input type="date" id="form1Example2" class="form-control" name="dataform"/>
+      </div>
+      <input type="hidden" id="form1Example1" class="form-control-plaintext invisible" name="reservaform" value="1" readonly/>
+      <input type="hidden" id="form1Example0" class="form-control-plaintext invisible" name="cpfform" value="3" readonly/>
+    </div>
+    <br>
+    <div class="d-grid gap-2 d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary">
+       Salvar
+      </button>
+      <a href="{% url 'home' %}" class="link-white">
+        <button class="btn btn-primary" type="button">
+          Listar
+        </button>
+      </a>
+  </div>
+  </form>
+</div>
+
+{% endfor %}
+<div class="text-center text-white-50 fs-6">
+  <br>
+  <a href="{% url 'sair' %}" class="text-white-50">Logout</a>
+  </div>
+{% endblock %}
